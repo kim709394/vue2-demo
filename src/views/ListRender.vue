@@ -1,29 +1,38 @@
 <template>
     <div>
-        <table id="persons" >
+        <table  >
             <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="150">
                 <col width="150">
                 <col width="150">
                 <col width="150">
                 <col width="150">
             </colgroup>
             <caption>
-                <strong>员工信息表</strong>
+                <strong>核心网列表</strong>
             </caption>
             <thead>
                 <tr>
-                    <td>姓名</td>
-                    <td>标签号</td>
-                    <td>工号</td>
-                    <td>部门</td>
+                    <td>名称</td>
+                    <td>厂商名称</td>
+                    <td>ip地址</td>
+                    <td>mac地址</td>
+                    <td>型号</td>
+                    <td>用户名</td>
+                    <td>密码</td>
                 </tr>
             </thead>
-            <tbody v-if="persons.length >0">
-                <tr v-for="p of persons" :key="p.id">
+            <tbody v-if="devices.length >0">
+                <tr v-for="p of devices" :key="p.id">
                     <td>{{ p.name }}</td>
-                    <td>{{ p.cardid }}</td>
-                    <td>{{ p.workerCode }}</td>
-                    <td>{{ p.department }}</td>
+                    <td>{{ p.manufacturer }}</td>
+                    <td>{{ p.ip }}</td>
+                    <td>{{ p.mac }}</td>
+                    <td>{{ p.model }}</td>
+                    <td>{{ p.username }}</td>
+                    <td>{{ p.password }}</td>
                 </tr>
             </tbody>
             <tbody v-else>
@@ -35,19 +44,20 @@
 <script>
     import _myAxios from '@/util/myAxios';
     const options = {
+        //页面加载时调用的方法
         mounted: function(){
-           this.getData();
+           this.getData();  
         },
         data: function(){
-            return {persons:[]};
+            return {devices:[]};
         },
         methods: {
             getData(){
-                _myAxios.post("/staff/page",{
+                _myAxios.post("/corenetwork/dopage",{
                     pageNo: 1,
                     pageSize: 10
                 }).then(resp => {
-                    this.persons = resp.data.data.records;
+                    this.devices = resp.data.data.records;
                 }).catch(error =>{
                     console.log(error);
                 });

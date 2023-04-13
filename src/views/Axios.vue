@@ -10,7 +10,7 @@ const options = {
     methods: {
         //同步ajax请求需要添加async和await关键字
         async getCount(){
-            const resp = await axios.get('/worker/collected/count');
+            const resp = await axios.get('/org/tree');
             console.log(resp);
         }
     }
