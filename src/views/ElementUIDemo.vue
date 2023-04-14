@@ -1,10 +1,60 @@
 <template>
     <div>
         <el-container>
-            <el-header>Header</el-header>
+            <el-header>
+                <!-- 头部 -->
+                <el-dropdown>
+                <span class="el-dropdown-link">
+                    欢迎您,admin<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>上传头像</el-dropdown-item>
+                    <el-dropdown-item>个人信息</el-dropdown-item>
+                    <el-dropdown-item>修改密码</el-dropdown-item>
+                </el-dropdown-menu>
+                </el-dropdown>
+            </el-header>
             <el-container>
-                <el-aside width="200px">Aside</el-aside>
-                <el-container>
+                <!-- 侧边栏 -->
+                <el-aside width="200px">
+                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                    <el-radio-button :label="false">展开</el-radio-button>
+                    <el-radio-button :label="true">收起</el-radio-button>
+                    </el-radio-group>
+                    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse">
+                    <el-submenu index="1">
+                        <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">导航一</span>
+                        </template>
+                        <el-menu-item-group>
+                        <span slot="title">分组一</span>
+                        <el-menu-item index="1-1">选项1</el-menu-item>
+                        <el-menu-item index="1-2">选项2</el-menu-item>
+                        </el-menu-item-group>
+                        <el-menu-item-group title="分组2">
+                        <el-menu-item index="1-3">选项3</el-menu-item>
+                        </el-menu-item-group>
+                        <el-submenu index="1-4">
+                        <span slot="title">选项4</span>
+                        <el-menu-item index="1-4-1">选项1</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="2">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">导航二</span>
+                    </el-menu-item>
+                    <el-menu-item index="3" disabled>
+                        <i class="el-icon-document"></i>
+                        <span slot="title">导航三</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">导航四</span>
+                    </el-menu-item>
+                    </el-menu>
+                </el-aside>
+                <el-container class="main">
                     <el-main>
                         <!-- 搜索框 -->
                         <div>
@@ -38,7 +88,7 @@
                                 </el-form>
                         </div>
                         <!-- 表格数据 -->
-                        <div v-if="tableData.length > 0">
+                        <div v-if="tableData.length > 0" >
                             <el-table
                             :data="tableData"
                             style="width: 100%">
@@ -93,7 +143,9 @@
                             暂无数据
                         </div>
                     </el-main>
-                    <el-footer>Footer</el-footer>
+                    <el-footer>
+                        © 深圳市XXXX股份有限公司
+                    </el-footer>
                 </el-container>
             </el-container>
           
@@ -120,7 +172,8 @@
                     mac:'',
                     ip:'',
                     createdTime:[]
-                }
+                },
+                isCollapse: true    //导航栏收缩/展开控制
             }
         },
         methods: {
@@ -174,13 +227,16 @@
         text-align: center;
         line-height: 200px;
     }
-    
+
     .el-main {
         background-color: #E9EEF3;
         color: #333;
         text-align: center;
         line-height: 50px;
+        min-height: 82vh;
+      
     }
+  
     
     body > .el-container {
         margin-bottom: 40px;
@@ -199,5 +255,13 @@
     }
     .el-form-item {
         text-align: left;
-    }    
+    }
+    .el-header {
+        text-align: right;
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
+    }
+        
 </style>
