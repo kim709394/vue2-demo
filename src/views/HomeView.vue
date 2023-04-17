@@ -1,8 +1,13 @@
 <template>
   <div class="home">
+    <div>
+      <!-- 子路由显示内容 -->
+      <router-view></router-view>
+    </div>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
+  
 </template>
 
 <script>

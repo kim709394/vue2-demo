@@ -10,7 +10,22 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    //嵌套子路由,子路由的组件内容是在父路由的  <router-view></router-view>标签显示
+    children: [
+      {
+        path: '/c/c1' ,
+        component: () => import('../views/children/ChildView1.vue')
+      },
+      {
+        path: '/c/c2',
+        component: () => import('../views/children/ChildView2.vue')
+      },
+      {
+        path: '/c/c3',
+        component: () => import('../views/children/ChildView3.vue')
+      }
+    ]
   },
   //动态路由，按需加载，路由到哪个组件就加载哪个组件，没有路由到的组件就不加载，推荐使用
   {
@@ -20,6 +35,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    
   },
 
   {

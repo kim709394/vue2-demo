@@ -9,7 +9,9 @@ import Vue from 'vue'
 //import ListRender from './views/ListRender'
 //import ComponentReuse from  './views/ComponentReuse'
 //import ElementUIDemo from './views/ElementUIDemo'
-import RouterDemo from './views/RouterDemo'
+//import RouterDemo from './views/RouterDemo'
+//import RouterJump from './views/RouterJump'
+import RouterMemu from './views/RouterMemu'
 import router from './router/myRouter'
 import store from './store'
 import ElementUI from 'element-ui';
@@ -21,5 +23,5 @@ Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
 new Vue({
   router,
   store,
-  render: h => h(RouterDemo)
+  render: h => h(RouterMemu)
 }).$mount('#app')
