@@ -55,4 +55,8 @@ const router = new VueRouter({
   routes
 })
 
+//重置路由
+export const resetRouter = function(){
+  router.matcher = new VueRouter({routes});
+}
 export default router

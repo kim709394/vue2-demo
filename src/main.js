@@ -11,7 +11,8 @@ import Vue from 'vue'
 //import ElementUIDemo from './views/ElementUIDemo'
 //import RouterDemo from './views/RouterDemo'
 //import RouterJump from './views/RouterJump'
-import RouterMemu from './views/RouterMemu'
+//import RouterMemu from './views/RouterMemu'
+import DynamicMemu from './views/DynamicMemu'
 import router from './router/myRouter'
 import store from './store'
 import ElementUI from 'element-ui';
@@ -23,5 +24,5 @@ Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
 new Vue({
   router,
   store,
-  render: h => h(RouterMemu)
+  render: h => h(DynamicMemu)
 }).$mount('#app')
